@@ -1,5 +1,6 @@
 package com.hendisantika.dynamicmultitenancy.tenant.config;
 
+import com.hendisantika.dynamicmultitenancy.mastertenant.entity.MasterTenant;
 import com.hendisantika.dynamicmultitenancy.mastertenant.repository.MasterTenantRepository;
 import org.hibernate.engine.jdbc.connections.spi.AbstractDataSourceBasedMultiTenantConnectionProviderImpl;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -29,8 +31,25 @@ public class DataSourceBasedMultiTenantConnectionProviderImpl extends AbstractDa
     private static final long serialVersionUID = 1L;
 
     private final Map<String, DataSource> dataSourcesMtApp = new TreeMap<>();
+
     @Autowired
     ApplicationContext applicationContext;
+
     @Autowired
     private MasterTenantRepository masterTenantRepository;
+
+    @Override
+    protected DataSource selectAnyDataSource() {
+        // This method is called more than once. So check if the data source map
+        // is empty. If it is then rescan master_tenant table for all tenant
+        if (dataSourcesMtApp.isEmpty()) {
+            List<MasterTenant> masterTenants = masterTenantRepository.findAll();
+            LOG.info("selectAnyDataSource() method call...Total tenants:" + masterTenants.size());
+            for (MasterTenant masterTenant : masterTenants) {
+                dataSourcesMtApp.put(masterTenant.getDbName(),
+                        DataSourceUtil.createAndConfigureDataSource(masterTenant));
+            }
+        }
+        return this.dataSourcesMtApp.values().iterator().next();
+    }
 }
