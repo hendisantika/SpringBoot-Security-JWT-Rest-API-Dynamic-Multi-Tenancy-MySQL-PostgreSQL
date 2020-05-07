@@ -1,0 +1,14 @@
+multitenancy:
+  mtapp:
+    master:
+      datasource:
+        url: jdbc:mysql://192.168.0.115:3306/master_db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
+        username: root
+        password: root
+        driverClassName: com.mysql.cj.jdbc.Driver
+        connectionTimeout: 20000
+        maxPoolSize: 250
+        idleTimeout: 300000
+        minIdle: 5
+        poolName: masterdb-connection-pool
+
