@@ -2,6 +2,7 @@ package com.hendisantika.dynamicmultitenancy.tenant.config;
 
 import com.hendisantika.dynamicmultitenancy.mastertenant.entity.MasterTenant;
 import com.hendisantika.dynamicmultitenancy.mastertenant.repository.MasterTenantRepository;
+import com.hendisantika.dynamicmultitenancy.util.DataSourceUtil;
 import org.hibernate.engine.jdbc.connections.spi.AbstractDataSourceBasedMultiTenantConnectionProviderImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
