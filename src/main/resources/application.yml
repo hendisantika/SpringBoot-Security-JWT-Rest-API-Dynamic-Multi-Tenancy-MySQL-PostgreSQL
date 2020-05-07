@@ -12,3 +12,12 @@ multitenancy:
         minIdle: 5
         poolName: masterdb-connection-pool
 
+logging:
+  pattern:
+    console: %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+  level:
+    org.hibernate.SQL: error
+  logging.level.=error
+server:
+  error:
+    include-stacktrace: never
