@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -71,5 +72,10 @@ public class JwtTokenUtil implements Serializable {
                 .setExpiration(new Date(System.currentTimeMillis() + JWTConstants.ACCESS_TOKEN_VALIDITY_SECONDS * 1000))
                 .signWith(SignatureAlgorithm.HS256, JWTConstants.SIGNING_KEY)
                 .compact();
+    }
+
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        final String username = getUsernameFromToken(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }
