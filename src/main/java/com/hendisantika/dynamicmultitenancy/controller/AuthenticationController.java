@@ -46,7 +46,7 @@ public class AuthenticationController implements Serializable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationController.class);
 
-    private final Map<String, String> mapValue = new HashMap<>();
+    private Map<String, String> mapValue = new HashMap<>();
     private final Map<String, String> userDbMap = new HashMap<>();
 
 
