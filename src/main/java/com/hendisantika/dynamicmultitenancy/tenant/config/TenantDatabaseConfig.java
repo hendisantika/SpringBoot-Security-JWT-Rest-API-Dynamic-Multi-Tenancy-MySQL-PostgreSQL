@@ -1,5 +1,6 @@
 package com.hendisantika.dynamicmultitenancy.tenant.config;
 
+import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -54,5 +55,15 @@ public class TenantDatabaseConfig {
     public MultiTenantConnectionProvider multiTenantConnectionProvider() {
         // Autowires the multi connection provider
         return new DataSourceBasedMultiTenantConnectionProviderImpl();
+    }
+
+    /**
+     * The current tenant identifier resolver
+     *
+     * @return
+     */
+    @Bean(name = "currentTenantIdentifierResolver")
+    public CurrentTenantIdentifierResolver currentTenantIdentifierResolver() {
+        return new CurrentTenantIdentifierResolverImpl();
     }
 }
