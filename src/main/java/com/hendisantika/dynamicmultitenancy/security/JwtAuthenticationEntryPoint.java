@@ -1,4 +1,4 @@
-package com.hendisantika.dynamicmultitenancy.mastertenant.security;
+package com.hendisantika.dynamicmultitenancy.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
