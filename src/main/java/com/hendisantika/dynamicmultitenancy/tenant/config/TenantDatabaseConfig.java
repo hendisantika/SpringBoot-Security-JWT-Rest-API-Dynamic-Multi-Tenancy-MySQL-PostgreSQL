@@ -1,6 +1,8 @@
 package com.hendisantika.dynamicmultitenancy.tenant.config;
 
+import org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -40,5 +42,17 @@ public class TenantDatabaseConfig {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(tenantEntityManager);
         return transactionManager;
+    }
+
+    /**
+     * The multi tenant connection provider
+     *
+     * @return
+     */
+    @Bean(name = "datasourceBasedMultitenantConnectionProvider")
+    @ConditionalOnBean(name = "masterEntityManagerFactory")
+    public MultiTenantConnectionProvider multiTenantConnectionProvider() {
+        // Autowires the multi connection provider
+        return new DataSourceBasedMultiTenantConnectionProviderImpl();
     }
 }
