@@ -2,7 +2,7 @@ multitenancy:
   mtapp:
     master:
       datasource:
-        url: jdbc:mysql://192.168.0.115:3306/master_db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
+        url: jdbc:mysql://locahost:3306/master_db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
         username: root
         password: root
         driverClassName: com.mysql.cj.jdbc.Driver
@@ -14,10 +14,14 @@ multitenancy:
 
 logging:
   pattern:
-    console: %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
   level:
-    org.hibernate.SQL: error
-  logging.level.=error
+    root: ERROR
+    org.springframework.web: ERROR
+    com.hendisantika.dynamicmultitenancy: DEBUG
+    org.hibernate: ERROR
 server:
   error:
     include-stacktrace: never
+
