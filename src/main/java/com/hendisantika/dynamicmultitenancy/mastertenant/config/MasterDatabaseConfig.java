@@ -1,12 +1,18 @@
 package com.hendisantika.dynamicmultitenancy.mastertenant.config;
 
+import com.hendisantika.dynamicmultitenancy.mastertenant.entity.MasterTenant;
+import com.hendisantika.dynamicmultitenancy.mastertenant.repository.MasterTenantRepository;
 import com.zaxxer.hikari.HikariDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -49,5 +55,26 @@ public class MasterDatabaseConfig {
         hikariDataSource.setIdleTimeout(masterDbProperties.getIdleTimeout());
         LOG.info("Setup of masterDataSource succeeded.");
         return hikariDataSource;
+    }
+
+    @Primary
+    @Bean(name = "masterEntityManagerFactory")
+    public LocalContainerEntityManagerFactoryBean masterEntityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        // Set the master data source
+        em.setDataSource(masterDataSource());
+        // The master tenant entity and repository need to be scanned
+        em.setPackagesToScan(MasterTenant.class.getPackage().getName(),
+                MasterTenantRepository.class.getPackage().getName());
+        // Setting a name for the persistence unit as Spring sets it as
+        // 'default' if not defined
+        em.setPersistenceUnitName("masterdb-persistence-unit");
+        // Setting Hibernate as the JPA provider
+        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        em.setJpaVendorAdapter(vendorAdapter);
+        // Set the hibernate properties
+        em.setJpaProperties(hibernateProperties());
+        LOG.info("Setup of masterEntityManagerFactory succeeded.");
+        return em;
     }
 }
