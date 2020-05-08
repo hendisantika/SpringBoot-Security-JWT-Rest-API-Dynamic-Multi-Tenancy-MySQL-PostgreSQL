@@ -2,7 +2,7 @@ multitenancy:
   mtapp:
     master:
       datasource:
-        url: jdbc:mysql://locahost:3306/master_db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
+        url: jdbc:mysql://localhost:3306/master_db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
         username: root
         password: root
         driverClassName: com.mysql.cj.jdbc.Driver

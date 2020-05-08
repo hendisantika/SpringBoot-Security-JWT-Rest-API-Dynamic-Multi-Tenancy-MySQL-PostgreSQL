@@ -90,14 +90,14 @@ public class TenantDatabaseConfig {
                     CurrentTenantIdentifierResolver tenantResolver) {
         LocalContainerEntityManagerFactoryBean emfBean = new LocalContainerEntityManagerFactoryBean();
         //All tenant related entities, repositories and service classes must be scanned
-        emfBean.setPackagesToScan("com.amran.dynamic.multitenant");
+        emfBean.setPackagesToScan("com.hendisantika.dynamicmultitenancy");
         emfBean.setJpaVendorAdapter(jpaVendorAdapter());
         emfBean.setPersistenceUnitName("tenantdb-persistence-unit");
         Map<String, Object> properties = new HashMap<>();
         properties.put(Environment.MULTI_TENANT, MultiTenancyStrategy.DATABASE);
         properties.put(Environment.MULTI_TENANT_CONNECTION_PROVIDER, connectionProvider);
         properties.put(Environment.MULTI_TENANT_IDENTIFIER_RESOLVER, tenantResolver);
-        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+        properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
         properties.put(Environment.SHOW_SQL, true);
         properties.put(Environment.FORMAT_SQL, true);
         properties.put(Environment.HBM2DDL_AUTO, "none");
