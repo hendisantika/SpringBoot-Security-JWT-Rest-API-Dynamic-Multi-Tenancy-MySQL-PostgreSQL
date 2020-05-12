@@ -143,6 +143,14 @@ INSERT INTO "public"."tbl_user" ("user_id", "full_name", "gender", "user_name", 
 ('1', 'Uzumaki Naruto', 'Male', 'naruto', '$2y$12$/WhepH7JVYUCl4ujy6FFguiCi/x2q4dwXISD.WJTXYIN2QAhv6Zky', 'ACTIVE');
 ```
 
+Database creation and table creation are done!
+
+### Configure Tenant Database.
+
+In this section, we'll work to understand multitenancy in Hibernate. There are three approaches to multitenancy in Hibernate:
+* Separate Schema — one schema per tenant in the same physical database instance.
+* Separate Database — one separate physical database instance per tenant.
+* Partitioned (Discriminator) Data — the data for each tenant is partitioned by a discriminator value.
  
 
  
