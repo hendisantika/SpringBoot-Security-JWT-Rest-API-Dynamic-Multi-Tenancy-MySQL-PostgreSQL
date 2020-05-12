@@ -152,5 +152,20 @@ In this section, we'll work to understand multitenancy in Hibernate. There are t
 * Separate Database — one separate physical database instance per tenant.
 * Partitioned (Discriminator) Data — the data for each tenant is partitioned by a discriminator value.
  
+### Database Data checks:
+Master Database data:
 
+    tbl_tenant_master
  
+```sql
+MariaDB [master_db]> select * from tbl_tenant_master;
++------------------+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----------+--------------------------+--------+
+| tenant_client_id | db_name       | url                                                                                                                                                           | user_name    | password | driver_class             | status |
++------------------+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----------+--------------------------+--------+
+|              100 | tenant_db     | jdbc:mysql://localhost:3306/tenant_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false | root         | root     | com.mysql.cj.jdbc.Driver | ACTIVE |
+|              200 | tenant_db_pgs | jdbc:postgresql://localhost:5432/tenant_db_pgs                                                                                                                | hendisantika | root     | org.Postgresql.Driver    | ACTIVE |
+|              300 | tenant_db2    | jdbc:mysql://localhost:3306/tenant_db?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false | root         | root     | com.mysql.cj.jdbc.Driver | ACTIVE |
++------------------+---------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+----------+--------------------------+--------+
+3 rows in set (0.010 sec)
+
+```
