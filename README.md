@@ -20,7 +20,7 @@ A multi-tenant application is where a tenant (i.e. users in a company) feels tha
 
 Dynamic Multi-Tenant High-Level Diagram:
 
---- ADA DIAGRAM ---
+![Dynamic Multi-Tenant High-Level Diagram](img/multi.png "Dynamic Multi-Tenant High-Level Diagram")
 
 Here,
 * Client requests to login to the system.
@@ -30,6 +30,8 @@ Here,
 * After successful authentication, the user gets a JWT for the next execution.
 
 The whole process executes in the following workflow:
+
+![The whole process executes in the following workflow](img/sequence.png "The whole process executes in the following workflow")
 
 Technology and Project Structure:
 * Java 11.
@@ -217,5 +219,20 @@ Now, test that everything works as we expect using Postman:
 
 Target MySQL:
 
+User Login in MySQL
+
+![User Login in MySQL](img/login-mysql.png "User Login in MySQL")
+
+Get Product List in MySQL
+
+![Get Product List in MySQL](img/products-mysql.png "Get Product List in MySQL") 
 
 Target PostgreSQL:
+
+User Login in PostgreSQL
+
+![User Login in PostgreSQL](img/login-psql.png "User Login in PostgreSQL")
+
+Get Product List in PostgreSQL
+
+![Get Product List in PostgreSQL](img/products-psql.png "Get Product List in PostgreSQL") 
