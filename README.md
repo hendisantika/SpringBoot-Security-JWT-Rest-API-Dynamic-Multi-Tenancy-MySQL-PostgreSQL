@@ -235,4 +235,4 @@ User Login in PostgreSQL
 
 Get Product List in PostgreSQL
 
-![Get Product List in PostgreSQL](img/products-psql.png "Get Product List in PostgreSQL") 
+![Get Product List in PostgreSQL](img/products-pSpringBoot-Security-JWT-Rest-API-Dynamic-Multi-Tenancy-MySQL-PostgreSQL.postman_collection.jsonsql.png "Get Product List in PostgreSQL") 
