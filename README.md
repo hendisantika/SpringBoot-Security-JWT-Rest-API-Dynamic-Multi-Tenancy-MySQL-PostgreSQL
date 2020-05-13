@@ -192,5 +192,30 @@ MariaDB [tenant_db]> select * from tbl_product;
 +------------+--------------+----------+------+
 1 row in set (0.000 sec)
 
+```
+
+### Tenant Database (PostgreSQL) Tables Data:
+
+    tbl_user
+    tbl_product
+```sql
+tenant_db_pgs=# select * from tbl_user;
+ user_id |   full_name    | gender | user_name |                           password                           | status 
+---------+----------------+--------+-----------+--------------------------------------------------------------+--------
+       1 | Uzumaki Naruto | Male   | naruto    | $2y$12$/WhepH7JVYUCl4ujy6FFguiCi/x2q4dwXISD.WJTXYIN2QAhv6Zky | ACTIVE
+(1 row)
+
+tenant_db_pgs=# select * from tbl_product;
+ product_id | product_name | quantity | size 
+------------+--------------+----------+------
+          1 | Apple MacOS  |        5 | M
+(1 row)
 
 ```
+
+Now, test that everything works as we expect using Postman:
+
+Target MySQL:
+
+
+Target PostgreSQL:
