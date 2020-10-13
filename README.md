@@ -1,3 +1,8 @@
+copied from 
+https://github.com/hendisantika/SpringBoot-Security-JWT-Rest-API-Dynamic-Multi-Tenancy-MySQL-PostgreSQL.git
+
+own git hub repo  https://github.com/PraveenBiradar/SpringBoot-Security-JWT-Rest-API-Dynamic-Multi-Tenancy-MySQL-PostgreSQL
+################################################################################################################################
 # SpringBoot-Security-JWT-Rest-API-Dynamic-Multi-Tenancy-MySQL-PostgreSQL
 ### Purpose
 
