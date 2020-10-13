@@ -29,6 +29,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class MasterTenant implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "tenant_client_id")

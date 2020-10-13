@@ -44,6 +44,8 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 public class AuthenticationController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationController.class);
 
     private Map<String, String> mapValue = new HashMap<>();
@@ -59,7 +61,8 @@ public class AuthenticationController implements Serializable {
     @Autowired
     private MasterTenantService masterTenantService;
 
-    @PostMapping(value = "/login")
+    @SuppressWarnings("unlikely-arg-type")
+	@PostMapping(value = "/login")
     public ResponseEntity<?> userLogin(@RequestBody @NotNull UserLoginDTO userLoginDTO) throws AuthenticationException {
         LOGGER.info("userLogin() method call...");
         if (null == userLoginDTO.getUserName() || userLoginDTO.getUserName().isEmpty()) {
@@ -88,10 +91,10 @@ public class AuthenticationController implements Serializable {
         return ResponseEntity.ok(new AuthResponse(userDetails.getUsername(), token));
     }
 
-    private void loadCurrentDatabaseInstance(String databaseName, String userName) {
-        DBContextHolder.setCurrentDb(databaseName);
-        mapValue.put(userName, databaseName);
-    }
+//    private void loadCurrentDatabaseInstance(String databaseName, String userName) {
+//        DBContextHolder.setCurrentDb(databaseName);
+//        mapValue.put(userName, databaseName);
+//    }
 
     @Bean(name = "userTenantInfo")
     @ApplicationScope
