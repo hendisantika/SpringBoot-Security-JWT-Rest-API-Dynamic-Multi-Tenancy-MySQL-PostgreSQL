@@ -70,8 +70,10 @@ public class AuthenticationController implements Serializable {
         if (null == masterTenant || masterTenant.getStatus().toUpperCase().equals(UserStatus.INACTIVE)) {
             throw new RuntimeException("Please contact service provider.");
         }
+        //Set Client DB
+        DBContextHolder.setCurrentDb(masterTenant.getDbName());
         //Entry Client Wise value dbName store into bean.
-        loadCurrentDatabaseInstance(masterTenant.getDbName(), userLoginDTO.getUserName());
+        //loadCurrentDatabaseInstance(masterTenant.getDbName(), userLoginDTO.getUserName());
         final Authentication authentication =
                 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDTO.getUserName()
                         , userLoginDTO.getPassword()));
@@ -79,6 +81,8 @@ public class AuthenticationController implements Serializable {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         final String token = jwtTokenUtil.generateToken(userDetails.getUsername(),
                 String.valueOf(userLoginDTO.getTenantOrClientId()));
+        //Entry Client Wise value dbName store into bean.
+        mapValue.put(userDetails.getUsername(), masterTenant.getDbName());
         //Map the value into applicationScope bean
         setMetaDataAfterLogin();
         return ResponseEntity.ok(new AuthResponse(userDetails.getUsername(), token));
