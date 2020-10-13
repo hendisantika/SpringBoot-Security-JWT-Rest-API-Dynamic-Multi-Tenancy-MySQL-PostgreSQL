@@ -1,7 +1,6 @@
 package com.hendisantika.dynamicmultitenancy.security;
 
 import com.hendisantika.dynamicmultitenancy.mastertenant.config.DBContextHolder;
-import com.hendisantika.dynamicmultitenancy.mastertenant.service.MasterTenantService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -29,9 +28,6 @@ public class RequestAuthorizationIntercept {
 
     @Autowired
     private ApplicationContext applicationContext;
-
-    @Autowired
-    private MasterTenantService masterTenantService;
 
     @Around("@annotation(com.hendisantika.dynamicmultitenancy.security.RequestAuthorization)")
     public Object checkPermission(ProceedingJoinPoint pjp) throws Throwable {

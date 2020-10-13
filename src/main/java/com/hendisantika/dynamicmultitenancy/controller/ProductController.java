@@ -26,6 +26,8 @@ import java.io.Serializable;
 @RequestMapping("/api/product")
 public class ProductController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationController.class);
 
     @Autowired

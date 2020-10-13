@@ -20,6 +20,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class AuthResponse implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
     private String userName;
     private String token;
 }
