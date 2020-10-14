@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n    \"userName\":\"Praveen\",\r\n    \"password\":\"test\",\r\n    \"tenantOrClientId\":100\r\n}",
+					"raw": "{\r\n\r\n    \"userName\":\"PrAvEEn\",\r\n    \"password\":\"test\",\r\n    \"tenantOrClientId\":100\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
