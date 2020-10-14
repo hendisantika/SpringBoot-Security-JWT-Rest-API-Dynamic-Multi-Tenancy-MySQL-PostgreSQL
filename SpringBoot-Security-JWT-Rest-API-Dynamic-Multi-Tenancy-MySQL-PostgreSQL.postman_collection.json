@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "f16e2d65-9731-4f38-a019-514b7ef5944b",
-		"name": "Spring-boot-multi-tenantt",
+		"name": "Spring-boot-multi-tenant",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -29,6 +29,74 @@
 						"api",
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/api/product/all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCaXJhZGFyIiwiYXVkIjoiMjAwIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJzeXN0ZW0iLCJpYXQiOjE2MDI1Nzk0NzAsImV4cCI6MTYwMjU5NzQ3MH0.EG7IWRCbZLv8QBYUJumGZDqmz-ZXTcZt-DyVwQlRL0Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF2ZWVuIiwiYXVkIjoiMTAwIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJzeXN0ZW0iLCJpYXQiOjE2MDIwNTMyOTAsImV4cCI6MTYwMjA3MTI5MH0.UjCvtwU_0PLhqrJ8TQ23lCNthtUaL2A-ZZBc9NZpMRI",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "localhost:9090/api/product/all",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"product",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/api/product/logout/logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJQcmF2ZWVuIiwiYXVkIjoiMTAwIiwic2NvcGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpc3MiOiJzeXN0ZW0iLCJpYXQiOjE2MDI2NTQ2NzUsImV4cCI6MTYwMjY3MjY3NX0.ZpzEggbhYhlWcT5JLungYOGx9ijA-q8OA6io4B8JX7k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/api/product/logout/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"product",
+						"logout",
+						"logout"
 					]
 				}
 			},
