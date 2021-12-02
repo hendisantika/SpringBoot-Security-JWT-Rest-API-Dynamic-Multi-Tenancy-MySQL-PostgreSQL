@@ -27,7 +27,10 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/product/logout")
 public class LogoutController implements Serializable {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LogoutController.class);
+	
+	private static final long serialVersionUID = 1L;
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(LogoutController.class);
 
     @Autowired
     private ApplicationContext applicationContext;
